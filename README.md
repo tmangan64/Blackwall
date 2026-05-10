@@ -41,7 +41,7 @@ The config describes three hosts:
 ```
 Hardware:
 - Case: Meshroom S
-- CPU: Intel i7-12700KF
+- CPU: Intel i7-12700KF@5Ghz
 - GPU: GigaByte GeForce RTX 4070TI
 - RAM: 32GB DDR5@6000MHz
 - Storage: 2TB NVMe (Windows 10) & 256GB (NixOS#elysia)
@@ -50,6 +50,13 @@ Hardware:
 Named after [Rache Bartmoss](https://cyberpunk.fandom.com/wiki/Rache_Bartmoss)' Cyberdeck.
 
 ### Canto
+```
+Hardware:
+- Device: Thinkpad X1 Carbon Gen 1
+- CPU: Intel i7-3667U@3.2Ghz
+- RAM: 8GB
+- Storage: 160GB
+```
 
 Named after the [Militech Canto](https://cyberpunk.fandom.com/wiki/Militech_Canto)
 
@@ -85,7 +92,7 @@ Storage:
 
 Node Red orchestrates automation between services:
 
-**Receipt to Pantry to Plate**
+Receipt to Pantry to Plate
 ```
 1. Scan shopping receipt (photo/PDF)
 2. OCR extracts items and quantities
@@ -95,7 +102,7 @@ Node Red orchestrates automation between services:
 6. Low stock items added to shopping list
 ```
 
-**Media Acquisition**
+Media Acquisition
 ```
 1. Add movie/show to Sonarr/Radarr watchlist
 2. Prowlarr searches indexers
@@ -104,7 +111,7 @@ Node Red orchestrates automation between services:
 5. ErsatzTV schedules into live channels
 ```
 
-**Home Presence**
+Home Presence
 ```
 1. Home Assistant detects arrival/departure
 2. Node Red triggers automations
