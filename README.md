@@ -81,6 +81,36 @@ Storage:
 - code-server
 ```
 
+#### Automation Flows
+
+Node Red orchestrates automation between services:
+
+**Receipt to Pantry to Plate**
+```
+1. Scan shopping receipt (photo/PDF)
+2. OCR extracts items and quantities
+3. Node Red parses and adds items to Homebox kitchen inventory
+4. Mealie suggests meals based on available ingredients
+5. Selected recipe deducts ingredients from inventory
+6. Low stock items added to shopping list
+```
+
+**Media Acquisition**
+```
+1. Add movie/show to Sonarr/Radarr watchlist
+2. Prowlarr searches indexers
+3. qBittorrent downloads media
+4. Jellyfin library auto-updates
+5. ErsatzTV schedules into live channels
+```
+
+**Home Presence**
+```
+1. Home Assistant detects arrival/departure
+2. Node Red triggers automations
+3. Lights, climate, media adjust accordingly
+```
+
 ## Modules
 
 | Module | Description |
