@@ -74,7 +74,7 @@ Storage:
 ```
 - [Astro.js webpage](https://blackwall.cam/)
 - DNS server, routing & firewall services for local network (AdGuard Home)
-- Jellyfin Media Stack & ErsatzTV
+- Jellyfin Media Stack, TubeArchivist & ErsatzTV
 - Nextcloud NAS
 - Soulseek/Nicotine+
 - Private Mastodon instance
