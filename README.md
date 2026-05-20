@@ -58,7 +58,7 @@ Hardware:
 - Storage: 160GB
 ```
 
-Named after the [Militech Canto](https://cyberpunk.fandom.com/wiki/Militech_Canto)
+Named after the [Militech Canto](https://cyberpunk.fandom.com/wiki/Militech_Canto).
 
 ### Blackwall
 
@@ -74,7 +74,7 @@ Storage:
 ```
 - [Astro.js webpage](https://blackwall.cam/)
 - DNS server, routing & firewall services for local network (AdGuard Home)
-- Jellyfin Media Stack, TubeArchivist & ErsatzTV
+- Jellyfin Media Stack, TubeArchivist & Tunarr
 - Nextcloud NAS
 - Soulseek/Nicotine+
 - Private Mastodon instance
@@ -88,36 +88,6 @@ Storage:
 - code-server
 ```
 
-#### Automation Flows
-
-Node Red orchestrates automation between services:
-
-Receipt to Pantry to Plate
-```
-1. Scan shopping receipt (photo/PDF)
-2. OCR extracts items and quantities
-3. Node Red parses and adds items to Homebox kitchen inventory
-4. Mealie suggests meals based on available ingredients
-5. Selected recipe deducts ingredients from inventory
-6. Low stock items added to shopping list
-```
-
-Media Acquisition
-```
-1. Add movie/show to Sonarr/Radarr watchlist
-2. Prowlarr searches indexers
-3. qBittorrent downloads media
-4. Jellyfin library auto-updates
-5. ErsatzTV schedules into live channels
-```
-
-Home Presence
-```
-1. Home Assistant detects arrival/departure
-2. Node Red triggers automations
-3. Lights, climate, media adjust accordingly
-```
-
 ## Modules
 
 | Module | Description |
@@ -127,7 +97,3 @@ Home Presence
 | `modules/server/` | SSH hardening, fail2ban, Caddy, Nextcloud, AdGuard |
 | `modules/users/` | User configurations for desktop and server |
 | `home/` | Home Manager: terminal, productivity apps, gaming |
-
-
-## TODO LIST
-- Arrange all items in README.md lists in alphabetical order
