@@ -81,11 +81,28 @@ Storage:
 - Authentik identity management
 - Home Assistant
 - Gitea
-- Node Red
+- n8n/local LLM
 - Homebox for item, kitchen and hardware inventory management
 - Mealie
 - WireGuard
 - code-server
+```
+
+### Archive
+The server also hosts archived copies of public repositories for local access
+
+```
+- https://github.com/lockfale/osint-framework
+- https://github.com/Augani/openreel-video
+- https://github.com/trimstray/the-book-of-secret-knowledge
+- https://github.com/coderamp-labs/pad.ws
+- https://github.com/fmhy/edit
+- https://github.com/Lifeforge-app/lifeforge
+- https://github.com/nilbuild/developer-roadmap
+- https://github.com/codecrafters-io/build-your-own-x
+- https://github.com/kaifcodec/ytconverter
+- https://github.com/usememos/memos
+- https://github.com/piotrkulpinski/openalternative
 ```
 
 ## Modules
