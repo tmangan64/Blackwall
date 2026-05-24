@@ -1,0 +1,14 @@
+[book]
+title = "Blackwall Documentation"
+authors = ["Teague M"]
+language = "en"
+description = "Technical documentation for the Blackwall self-hosted infrastructure"
+
+[build]
+build-dir = "book"
+
+[output.html]
+default-theme = "coal"
+preferred-dark-theme = "coal"
+git-repository-url = "https://github.com/tmangan64/Blackwall"
+additional-css = ["theme/custom.css"]
