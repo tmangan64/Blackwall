@@ -103,6 +103,7 @@ The server also hosts archived copies of public repositories for local access
 - https://github.com/kaifcodec/ytconverter
 - https://github.com/usememos/memos
 - https://github.com/piotrkulpinski/openalternative
+- https://x.com/d2cliparchive
 ```
 
 ## Modules
