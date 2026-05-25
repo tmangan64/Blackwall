@@ -107,6 +107,7 @@ The server will also host archived copies of public repositories for local acces
 - https://github.com/kaifcodec/ytconverter
 - https://github.com/usememos/memos
 - https://github.com/piotrkulpinski/openalternative
+- https://x.com/d2cliparchive
 ```
 
 ## Architecture
