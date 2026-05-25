@@ -7,5 +7,6 @@
     prismlauncher
     piper
     libratbag
+    adwsteamgtk
   ];
 }

@@ -7,13 +7,12 @@
     ./profiles/desktop.nix
     ./profiles/developer.nix
     ./profiles/gaming.nix
+    ./modules/firefox.nix
   ];
 
   home.username = "mizutani";
   home.homeDirectory = "/home/mizutani";
   home.stateVersion = "24.05";
-
-  nixpkgs.config.allowUnfree = true;
 
   # Additional packages not in profiles
   home.packages = with pkgs; [

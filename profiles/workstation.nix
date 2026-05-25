@@ -27,7 +27,6 @@
   hardware.graphics.enable = true;
 
   # Programs
-  programs.firefox.enable = true;
   programs.dconf.enable = true;
 
   # Desktop packages

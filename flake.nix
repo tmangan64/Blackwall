@@ -8,9 +8,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
   let
     system = "x86_64-linux";
   in
@@ -29,6 +31,7 @@
         modules = [
           ./hosts/elysia
           home-manager.nixosModules.default
+          { nixpkgs.overlays = [ nur.overlays.default ]; }
         ];
       };
 
@@ -44,6 +47,7 @@
         modules = [
           ./hosts/canto
           home-manager.nixosModules.default
+          { nixpkgs.overlays = [ nur.overlays.default ]; }
         ];
       };
 

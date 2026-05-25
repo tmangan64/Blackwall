@@ -49,12 +49,17 @@
     python314
   ];
 
-  # Home Manager (minimal config for laptop)
+  # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
+    useUserPackages = true;
     users.mizutani = { pkgs, ... }: {
       imports = [
         ../../home/profiles/base.nix
+        ../../home/profiles/desktop.nix
+        ../../home/profiles/developer.nix
+        ../../home/modules/firefox.nix
       ];
       home.username = "mizutani";
       home.homeDirectory = "/home/mizutani";

@@ -67,6 +67,8 @@
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
+    useUserPackages = true;
     users.mizutani = import ../../home/mizutani.nix;
   };
 }
