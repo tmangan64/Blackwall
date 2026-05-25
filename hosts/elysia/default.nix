@@ -1,13 +1,13 @@
 # Elysia - Gaming desktop workstation
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, hostname, ... }:
 
 {
   imports = [
     ./hardware.nix
-    ../../modules/common
-    ../../modules/desktop
-    ../../modules/desktop/gaming.nix
-    ../../modules/users/mizutani.nix
+    ../../profiles/base.nix
+    ../../profiles/workstation.nix
+    ../../profiles/developer.nix
+    ../../profiles/gaming.nix
   ];
 
   system.stateVersion = "25.05";
@@ -35,31 +35,29 @@
   };
   hardware.graphics.enable32Bit = true;
 
-  # Networking
-  networking.networkmanager.enable = true;
-
   # Auto-login
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "mizutani";
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  # Virtualisation
-  virtualisation.docker.enable = true;
-  virtualisation.podman.enable = true;
-
   # Media services
   services.lidarr.enable = true;
   services.prowlarr.enable = true;
   services.qbittorrent.enable = true;
 
+  # Wooting keyboard support
+  hardware.wooting.enable = true;
+
   # Additional packages
   environment.systemPackages = with pkgs; [
     os-prober
-    nodejs_22
     ollama
     efibootmgr
     solaar
+    wootility
+    wooting-udev-rules
+    mdbook
   ];
 
   environment.sessionVariables = {
@@ -69,6 +67,6 @@
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users.mizutani = import ../../home;
+    users.mizutani = import ../../home/mizutani.nix;
   };
 }

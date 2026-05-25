@@ -1,13 +1,13 @@
 # Canto - Thinkpad X1 Carbon laptop
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, hostname, ... }:
 
 {
   imports = [
     ./hardware.nix
-    ../../modules/common
-    ../../modules/desktop
-    ../../modules/desktop/gaming.nix
-    ../../modules/users/mizutani.nix
+    ../../profiles/base.nix
+    ../../profiles/workstation.nix
+    ../../profiles/gaming.nix
+    ../../profiles/laptop.nix
   ];
 
   system.stateVersion = "25.05";
@@ -22,20 +22,14 @@
   services.displayManager.gdm.wayland = false;
   services.displayManager.defaultSession = "gnome";
 
-  # Networking
-  networking.networkmanager.enable = true;
-
-  # Disable geoclue (causing issues)
-  services.geoclue2.enable = false;
+  # Hyprland (disabled)
+  programs.hyprland.enable = false;
 
   # Fingerprint (disabled)
   services.fprintd.enable = false;
   security.pam.services.gdm.enable = true;
   security.pam.services.login.enable = true;
   security.pam.services.sudo.enable = true;
-
-  # VirtualBox
-  virtualisation.virtualbox.host.enable = true;
 
   # Additional packages
   environment.systemPackages = with pkgs; [
@@ -52,11 +46,19 @@
     gnomeExtensions.extension-list
     gnomeExtensions.todo
     gnumake
+    python314
   ];
 
-  # Home Manager
+  # Home Manager (minimal config for laptop)
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users.mizutani = import ../../home;
+    users.mizutani = { pkgs, ... }: {
+      imports = [
+        ../../home/profiles/base.nix
+      ];
+      home.username = "mizutani";
+      home.homeDirectory = "/home/mizutani";
+      home.stateVersion = "25.05";
+    };
   };
 }

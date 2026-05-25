@@ -6,37 +6,37 @@ A Dendritic NixOS multi-host configuration
 
 ```
 Blackwall/
-├── flake.nix                      # Single flake defining all 3 hosts
+├── flake.nix
 ├── hosts/
-│   ├── blackwall/                 # Homeserver config
-│   ├── canto/                     # Thinkpad laptop config
-│   └── elysia/                    # Gaming desktop config
+│   ├── elysia/                    # Gaming desktop
+│   └── canto/                     # Thinkpad laptop
+├── profiles/
+│   ├── base.nix                   # Shared base (user, nix, locale)
+│   ├── workstation.nix            # Desktop environment
+│   ├── developer.nix              # Dev tools, containers
+│   ├── gaming.nix                 # Steam, gaming
+│   └── laptop.nix                 # Laptop-specific
 ├── modules/
-│   ├── common/                    # Shared: nix settings, locale
-│   ├── desktop/                   # GNOME, audio, gaming
-│   ├── server/                    # SSH, caddy, nextcloud, adguard, etc.
-│   └── users/
-│       ├── mizutani.nix           # Desktop user
-│       └── mizutani-server.nix    # Server user (immutable, SSH-only)
-├── home/                          # Home Manager config
-│   ├── default.nix                # Main home config
-│   ├── terminal.nix               # fish, kitty, fastfetch
-│   ├── productivity.nix           # obsidian, libreoffice, etc.
-│   └── gaming.nix                 # steam, prismlauncher
-├── secrets/
-│   └── secrets.yaml               # SOPS secrets placeholder
-└── .sops.yaml                     # SOPS configuration
+│   ├── audio.nix                  # Pipewire
+│   ├── fonts.nix                  # System fonts
+│   ├── locale.nix                 # Timezone, locale
+│   └── nix-settings.nix           # Flakes, unfree
+├── home/
+│   ├── mizutani.nix               # Main home config
+│   └── profiles/
+│       ├── base.nix               # Shell, terminal
+│       ├── desktop.nix            # Productivity apps
+│       ├── developer.nix          # Dev tools
+│       └── gaming.nix             # Gaming packages
+├── source/                        # Original config (archived)
+└── resources/                     # Documentation
 ```
 
 ## Hosts
 
-The config describes three hosts:
-
-- **Elysia** - Small form factor desktop PC for gaming, development and productivity.
-- **Canto** - Thinkpad X1 Carbon Gen 1 for development and productivity.
-- **Blackwall** - Beelink ME Pro N150 private server hosting game servers, web servers, media servers and NAS.
-
 ### Elysia
+
+Small form factor desktop PC for gaming, development and productivity.
 
 ```
 Hardware:
@@ -50,6 +50,9 @@ Hardware:
 Named after [Rache Bartmoss](https://cyberpunk.fandom.com/wiki/Rache_Bartmoss)' Cyberdeck.
 
 ### Canto
+
+Thinkpad X1 Carbon Gen 1 for development and productivity.
+
 ```
 Hardware:
 - Device: Thinkpad X1 Carbon Gen 1
@@ -60,7 +63,7 @@ Hardware:
 
 Named after the [Militech Canto](https://cyberpunk.fandom.com/wiki/Militech_Canto).
 
-### Blackwall
+## Future: Blackwall Server
 
 ```
 Beelink ME Pro N150
@@ -69,10 +72,10 @@ Storage:
 - 1TB 3.5" SATA (Nextcloud Data)
 ```
 
-#### Services
+### Planned Services
 
 ```
-- [Astro.js webpage](https://blackwall.cam/)
+- Astro.js webpage (blackwall.cam)
 - DNS server, routing & firewall services for local network (AdGuard Home)
 - Jellyfin Media Stack, TubeArchivist & Tunarr
 - Nextcloud NAS
@@ -89,7 +92,8 @@ Storage:
 ```
 
 ### Archive
-The server also hosts archived copies of public repositories for local access
+
+The server will also host archived copies of public repositories for local access:
 
 ```
 - https://github.com/lockfale/osint-framework
@@ -105,12 +109,20 @@ The server also hosts archived copies of public repositories for local access
 - https://github.com/piotrkulpinski/openalternative
 ```
 
-## Modules
+## Architecture
 
-| Module | Description |
-|--------|-------------|
-| `modules/common/` | Shared base config: nix settings, locale, timezone |
-| `modules/desktop/` | GNOME desktop, Pipewire audio, gaming (Steam) |
-| `modules/server/` | SSH hardening, fail2ban, Caddy, Nextcloud, AdGuard |
-| `modules/users/` | User configurations for desktop and server |
-| `home/` | Home Manager: terminal, productivity apps, gaming |
+| Layer | Description |
+|-------|-------------|
+| `profiles/` | Composable system feature sets |
+| `modules/` | Atomic, single-purpose modules |
+| `home/` | Home Manager with profiles |
+
+## Usage
+
+```bash
+# Rebuild elysia (gaming desktop)
+sudo nixos-rebuild switch --flake .#elysia
+
+# Rebuild canto (laptop)
+sudo nixos-rebuild switch --flake .#canto
+```

@@ -2,20 +2,34 @@
 
 [Introduction](./introduction.md)
 
-- [Blackwall](./blackwall/overview.md)
-  - [Hardware](./blackwall/hardware.md)
-  - [Services](./blackwall/services.md)
-  - [Networking](./blackwall/networking.md)
-  - [Security](./blackwall/security.md)
+# Configuration
 
-- [Elysia](./elysia/overview.md)
-  - [Hardware](./elysia/hardware.md)
-  - [Configuration](./elysia/configuration.md)
+- [flake.nix](./flake.md)
 
-- [Canto](./canto/overview.md)
-  - [Hardware](./canto/hardware.md)
-  - [Configuration](./canto/configuration.md)
+# Hosts
 
-- [Quick Reference](./reference/quick-reference.md)
-  - [Ports](./reference/ports.md)
-  - [Paths](./reference/paths.md)
+- [elysia](./hosts/elysia.md)
+- [canto](./hosts/canto.md)
+
+# Profiles
+
+- [base.nix](./profiles/base.md)
+- [workstation.nix](./profiles/workstation.md)
+- [developer.nix](./profiles/developer.md)
+- [gaming.nix](./profiles/gaming.md)
+- [laptop.nix](./profiles/laptop.md)
+
+# Modules
+
+- [audio.nix](./modules/audio.md)
+- [fonts.nix](./modules/fonts.md)
+- [locale.nix](./modules/locale.md)
+- [nix-settings.nix](./modules/nix-settings.md)
+
+# Home Manager
+
+- [mizutani.nix](./home/mizutani.md)
+- [profiles/base.nix](./home/profiles/base.md)
+- [profiles/desktop.nix](./home/profiles/desktop.md)
+- [profiles/developer.nix](./home/profiles/developer.md)
+- [profiles/gaming.nix](./home/profiles/gaming.md)

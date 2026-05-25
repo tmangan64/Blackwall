@@ -1,14 +1,13 @@
-# Introduction
+# Blackwall
 
-A Dendritic NixOS multi-host configuration.
+Multi-host NixOS configuration for desktop and laptop systems.
 
 ## Hosts
 
 | Host | Description |
 |------|-------------|
-| blackwall | Beelink EQ Pro N150 private server |
-| elysia | Small form factor gaming desktop |
-| canto | ThinkPad X1 Carbon development laptop |
+| elysia | Gaming desktop with NVIDIA GPU |
+| canto | ThinkPad X1 Carbon laptop |
 
 ## Structure
 
@@ -16,28 +15,38 @@ A Dendritic NixOS multi-host configuration.
 Blackwall/
 ├── flake.nix
 ├── hosts/
-│   ├── blackwall/
-│   ├── canto/
-│   └── elysia/
+│   ├── elysia/
+│   └── canto/
+├── profiles/
+│   ├── base.nix
+│   ├── workstation.nix
+│   ├── developer.nix
+│   ├── gaming.nix
+│   └── laptop.nix
 ├── modules/
-│   ├── common/
-│   ├── desktop/
-│   ├── server/
-│   └── users/
-├── home/
-└── secrets/
+│   ├── audio.nix
+│   ├── fonts.nix
+│   ├── locale.nix
+│   └── nix-settings.nix
+└── home/
+    ├── mizutani.nix
+    └── profiles/
+        ├── base.nix
+        ├── desktop.nix
+        ├── developer.nix
+        └── gaming.nix
 ```
 
-## Modules
+## Architecture
 
-| Module | Description |
-|--------|-------------|
-| `modules/common/` | Shared base config: nix settings, locale, timezone |
-| `modules/desktop/` | GNOME desktop, Pipewire audio, gaming |
-| `modules/server/` | SSH hardening, fail2ban, Caddy, Nextcloud, AdGuard |
-| `modules/users/` | User configurations for desktop and server |
-| `home/` | Home Manager: terminal, productivity apps, gaming |
+- **hosts/** - Machine-specific configuration and hardware
+- **profiles/** - Composable system-level feature sets
+- **modules/** - Atomic, single-purpose modules
+- **home/** - Home Manager user configuration with profiles
 
-## Source
+## Usage
 
-[github.com/tmangan64/Blackwall](https://github.com/tmangan64/Blackwall)
+```bash
+sudo nixos-rebuild switch --flake .#elysia
+sudo nixos-rebuild switch --flake .#canto
+```
