@@ -68,6 +68,7 @@ The server will also host archived copies of public repositories for local acces
 - https://github.com/usememos/memos
 - https://github.com/piotrkulpinski/openalternative
 - https://x.com/d2cliparchive
+- https://x.com/destiny2team
 ```
 
 ## Architecture
