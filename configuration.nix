@@ -25,7 +25,7 @@
   networking.networkmanager.enable = true;
 
   # Static IP for SSH port forwarding
-  networking.interfaces.wlp3s0 = {
+  networking.interfaces.enp3s0 = {
     useDHCP = false;
     ipv4.addresses = [{
       address = "192.168.1.66";
