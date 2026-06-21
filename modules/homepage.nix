@@ -210,4 +210,9 @@
 
   # Open port 8082 (homepage default)
   networking.firewall.allowedTCPPorts = [ 8082 ];
+
+  # Allow access from local network
+  systemd.services.homepage-dashboard.environment = {
+    HOMEPAGE_ALLOWED_HOSTS = "blackwall,localhost,127.0.0.1,192.168.1.66,192.168.1.0/24";
+  };
 }
