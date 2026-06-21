@@ -79,6 +79,8 @@
   };
   };
 
+  networking.firewall.allowedTCPPorts = [ 6622 ];
+
   services.fail2ban.enable = true;
 
   # Open ports in the firewall.
