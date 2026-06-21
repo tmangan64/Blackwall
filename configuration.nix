@@ -47,10 +47,7 @@
     packages = with pkgs; [];
   };
 
-  services.openssh = {
-	enable = true;
-	settings.PasswordAuthentication = true;
-  };
+  
 
 
   # List packages installed in system profile. To search, run:
@@ -72,6 +69,17 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  
+  services.openssh = {
+    enable = true;
+    ports = [ 6622 ];
+  settings = {
+    PasswordAuthentication = false;
+    PermitRootLogin = "no";
+  };
+  };
+
+  services.fail2ban.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
