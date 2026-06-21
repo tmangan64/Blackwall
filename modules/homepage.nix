@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   services.homepage-dashboard = {
@@ -212,7 +212,5 @@
   networking.firewall.allowedTCPPorts = [ 8082 ];
 
   # Allow access from local network
-  systemd.services.homepage-dashboard.environment = {
-    HOMEPAGE_ALLOWED_HOSTS = "blackwall,localhost,127.0.0.1,192.168.1.66,192.168.1.0/24";
-  };
+  systemd.services.homepage-dashboard.environment.HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "blackwall,localhost,127.0.0.1,192.168.1.66";
 }
