@@ -24,6 +24,17 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Static IP for SSH port forwarding
+  networking.interfaces.wlp3s0 = {
+    useDHCP = false;
+    ipv4.addresses = [{
+      address = "192.168.1.66";
+      prefixLength = 24;
+    }];
+  };
+  networking.defaultGateway = "192.168.1.1";
+  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+
   # Set your time zone.
   time.timeZone = "Europe/Jersey";
 
