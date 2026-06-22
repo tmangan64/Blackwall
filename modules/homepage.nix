@@ -212,5 +212,5 @@
   networking.firewall.allowedTCPPorts = [ 8082 ];
 
   # Allow access from local network
-  systemd.services.homepage-dashboard.environment.HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "blackwall:8082,localhost:8082,127.0.0.1:8082,192.168.1.66:8082";
+  systemd.services.homepage-dashboard.environment.HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "*";
 }
