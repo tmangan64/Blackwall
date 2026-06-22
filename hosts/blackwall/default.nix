@@ -5,6 +5,7 @@
     [
       ./hardware.nix
       ../../modules/homepage.nix
+      ../../modules/tailscale.nix
     ];
 
   # Bootloader
