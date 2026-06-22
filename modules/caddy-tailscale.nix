@@ -3,36 +3,11 @@
 let
   cfg = config.services.caddy-tailscale;
 
-  # Build Caddy with the tailscale plugin using xcaddy
-  caddy-with-tailscale = pkgs.stdenv.mkDerivation rec {
-    pname = "caddy-tailscale";
-    version = pkgs.caddy.version;
-
-    nativeBuildInputs = [ pkgs.go pkgs.xcaddy ];
-
-    dontUnpack = true;
-    dontConfigure = true;
-
-    buildPhase = ''
-      export HOME=$TMPDIR
-      export GOCACHE=$TMPDIR/go-cache
-      export GOPATH=$TMPDIR/go
-
-      xcaddy build v${version} \
-        --with github.com/tailscale/caddy-tailscale \
-        --output caddy
-    '';
-
-    installPhase = ''
-      mkdir -p $out/bin
-      cp caddy $out/bin/caddy
-    '';
-
-    meta = with lib; {
-      description = "Caddy with Tailscale plugin";
-      homepage = "https://github.com/tailscale/caddy-tailscale";
-      license = licenses.asl20;
-    };
+  # Build Caddy with the tailscale plugin using nixpkgs' withPlugins
+  # To update: remove the hash, build, and copy the correct hash from the error
+  caddy-with-tailscale = pkgs.caddy.withPlugins {
+    plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20250207163903-69a970c84556" ];
+    hash = lib.fakeHash;
   };
 in
 {
