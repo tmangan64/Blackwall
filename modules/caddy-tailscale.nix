@@ -83,10 +83,13 @@ in
       wants = [ "network-online.target" "tailscaled.service" ];
 
       serviceConfig = {
-        Type = "notify";
+        Type = "simple";
         ExecStart = "${caddy-with-tailscale}/bin/caddy run --config /etc/caddy-tailscale/Caddyfile --adapter caddyfile";
         ExecReload = "${caddy-with-tailscale}/bin/caddy reload --config /etc/caddy-tailscale/Caddyfile --adapter caddyfile";
-        TimeoutStopSec = "5s";
+        TimeoutStartSec = "180s";
+        TimeoutStopSec = "30s";
+        Restart = "on-failure";
+        RestartSec = "5s";
         LimitNOFILE = 1048576;
         LimitNPROC = 512;
         PrivateTmp = true;
@@ -96,6 +99,7 @@ in
         # State directory for Tailscale node state
         StateDirectory = "caddy-tailscale";
         WorkingDirectory = "/var/lib/caddy-tailscale";
+        Environment = "TS_AUTHKEY=tskey-auth-kuM4TrDcxm11CNTRL-jFR7x8ScCvgCDRKEGDCnvgGDJXRTUFqy";
       } // lib.optionalAttrs (cfg.authKeyFile != null) {
         EnvironmentFile = cfg.authKeyFile;
       };
