@@ -75,7 +75,7 @@
   # Each service gets its own custom URL: https://<name>.your-tailnet.ts.net
   services.caddy-tailscale = {
     enable = true;
-    authKeyFile = "/run/secrets/tailscale-caddy-authkey";
+    # authKeyFile = "/run/secrets/tailscale-caddy-authkey";
     services = {
       homepage = { port = 8082; };
       # Add more services as needed:
