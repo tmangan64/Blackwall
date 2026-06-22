@@ -7,7 +7,7 @@ let
   # To update: remove the hash, build, and copy the correct hash from the error
   caddy-with-tailscale = pkgs.caddy.withPlugins {
     plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20250207163903-69a970c84556" ];
-    hash = lib.fakeHash;
+    hash = "sha256-rcdUxdgkP33U6F9qd4lqVL+po3YlLdf1PrKFGgZ6tik=";
   };
 in
 {
