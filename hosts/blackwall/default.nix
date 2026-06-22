@@ -6,6 +6,7 @@
       ./hardware.nix
       ../../modules/homepage.nix
       ../../modules/tailscale.nix
+      ../../modules/caddy-tailscale.nix
     ];
 
   # Bootloader
@@ -69,6 +70,20 @@
 
   # Fail2ban
   services.fail2ban.enable = true;
+
+  # Caddy-Tailscale reverse proxy
+  # Each service gets its own custom URL: https://<name>.your-tailnet.ts.net
+  services.caddy-tailscale = {
+    enable = true;
+    # Uncomment and set the path to your auth key file:
+    # authKeyFile = "/run/secrets/tailscale-authkey";
+    services = {
+      homepage = { port = 8082; };
+      # Add more services as needed:
+      # grafana = { port = 3000; };
+      # jellyfin = { port = 8096; };
+    };
+  };
 
   system.stateVersion = "25.11";
 }
