@@ -8,6 +8,7 @@
       ../../modules/tailscale.nix
       ../../modules/caddy-tailscale.nix
       ../../modules/storage.nix
+      ../../modules/arr.nix
     ];
 
   # Bootloader
@@ -46,6 +47,9 @@
 
   # Media storage for Arr* suite, Nicotine+, etc.
   blackwall.storage.enable = true;
+
+  # Arr* media management suite
+  blackwall.arr.enable = true;
 
   # User account
   users.users.mizutani = {
