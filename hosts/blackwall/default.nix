@@ -7,6 +7,7 @@
       ../../modules/homepage.nix
       ../../modules/tailscale.nix
       ../../modules/caddy-tailscale.nix
+      ../../modules/storage.nix
     ];
 
   # Bootloader
@@ -43,11 +44,14 @@
   };
   console.keyMap = "uk";
 
+  # Media storage for Arr* suite, Nicotine+, etc.
+  blackwall.storage.enable = true;
+
   # User account
   users.users.mizutani = {
     isNormalUser = true;
     description = "Teague Mangan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "media" ];
     packages = with pkgs; [];
   };
 

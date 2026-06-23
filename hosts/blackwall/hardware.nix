@@ -23,6 +23,13 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  # HDD for media storage (Arr* suite, Nicotine+, etc.)
+  fileSystems."/media" =
+    { device = "/dev/disk/by-uuid/3d6aa6dd-df6a-4a7e-8bda-30ab3d2ee3d1";
+      fsType = "ext4";
+      options = [ "defaults" "nofail" ];
+    };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
