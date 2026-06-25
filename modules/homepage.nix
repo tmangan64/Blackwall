@@ -54,14 +54,14 @@
           {
             Jellyfin = {
               icon = "jellyfin";
-              href = "http://localhost:8096";
+              href = "https://jellyfin.tail222568.ts.net";
               description = "Media server";
             };
           }
           {
             Jellyseerr = {
               icon = "jellyseerr";
-              href = "http://localhost:5055";
+              href = "https://jellyseerr.tail222568.ts.net";
               description = "Media requests";
             };
           }
@@ -72,21 +72,21 @@
           {
             Radarr = {
               icon = "radarr";
-              href = "http://localhost:7878";
+              href = "https://radarr.tail222568.ts.net";
               description = "Movie management";
             };
           }
           {
             Prowlarr = {
               icon = "prowlarr";
-              href = "http://localhost:9696";
+              href = "https://prowlarr.tail222568.ts.net";
               description = "Indexer manager";
             };
           }
           {
             Transmission = {
               icon = "transmission";
-              href = "http://localhost:9091";
+              href = "https://transmission.tail222568.ts.net";
               description = "Torrent client";
             };
           }
