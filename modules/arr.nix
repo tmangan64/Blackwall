@@ -78,6 +78,11 @@ in
     users.users.radarr.extraGroups = [ storageCfg.group ];
     users.users.transmission.extraGroups = [ storageCfg.group ];
 
+    # Create category directories for arr services
+    systemd.tmpfiles.rules = [
+      "d ${storageCfg.basePath}/downloads/complete/radarr 2775 ${storageCfg.user} ${storageCfg.group} -"
+    ];
+
     # Caddy-Tailscale reverse proxy entries
     services.caddy-tailscale.services = {
       jellyfin = { port = 8096; };

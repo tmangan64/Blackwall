@@ -12,11 +12,11 @@
       color = "stone";
       headerStyle = "clean";
       layout = {
-        Services = {
+        Media = {
           style = "row";
-          columns = 3;
+          columns = 2;
         };
-        Infrastructure = {
+        Downloads = {
           style = "row";
           columns = 3;
         };
@@ -50,26 +50,46 @@
 
     services = [
       {
-        Services = [
-          # Add services here as you deploy them
-          # {
-          #   Nextcloud = {
-          #     icon = "nextcloud";
-          #     href = "https://cloud.example.com";
-          #     description = "File storage";
-          #   };
-          # }
+        Media = [
+          {
+            Jellyfin = {
+              icon = "jellyfin";
+              href = "http://localhost:8096";
+              description = "Media server";
+            };
+          }
+          {
+            Jellyseerr = {
+              icon = "jellyseerr";
+              href = "http://localhost:5055";
+              description = "Media requests";
+            };
+          }
         ];
       }
       {
-        Infrastructure = [
-          # {
-          #   "This Server" = {
-          #     icon = "mdi-server";
-          #     href = "#";
-          #     description = "Blackwall homelab";
-          #   };
-          # }
+        Downloads = [
+          {
+            Radarr = {
+              icon = "radarr";
+              href = "http://localhost:7878";
+              description = "Movie management";
+            };
+          }
+          {
+            Prowlarr = {
+              icon = "prowlarr";
+              href = "http://localhost:9696";
+              description = "Indexer manager";
+            };
+          }
+          {
+            Transmission = {
+              icon = "transmission";
+              href = "http://localhost:9091";
+              description = "Torrent client";
+            };
+          }
         ];
       }
     ];
