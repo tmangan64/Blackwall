@@ -1,9 +1,9 @@
 # Blackwall
 
-## Services
+## TO DO LIST
 
-```
-- Caddy/Tailscale access system
-- homepage menu
-- Jellyfin stack
-```
+1. Configure Arr\* suite stack
+2. Add sops-nix for secrets
+3. Add DNS server and provide IP for users
+
+### Later ideas

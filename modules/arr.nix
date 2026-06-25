@@ -38,6 +38,17 @@ in
       openFirewall = true;
     };
 
+    # FlareSolverr - Bypass Cloudflare protection for indexers
+    virtualisation.oci-containers.backend = "podman";
+    virtualisation.oci-containers.containers.flaresolverr = {
+      image = "ghcr.io/flaresolverr/flaresolverr:latest";
+      ports = [ "8191:8191" ];
+      environment = {
+        LOG_LEVEL = "info";
+        TZ = "UTC";
+      };
+    };
+
     # Transmission - Torrent client
     services.transmission = {
       enable = true;
