@@ -32,6 +32,13 @@ in
       group = storageCfg.group;
     };
 
+    # Sonarr - TV show management
+    services.sonarr = {
+      enable = true;
+      openFirewall = true;
+      group = storageCfg.group;
+    };
+
     # Prowlarr - Indexer manager
     services.prowlarr = {
       enable = true;
@@ -76,17 +83,20 @@ in
     # Add service users to media group for shared file access
     users.users.jellyfin.extraGroups = [ storageCfg.group ];
     users.users.radarr.extraGroups = [ storageCfg.group ];
+    users.users.sonarr.extraGroups = [ storageCfg.group ];
     users.users.transmission.extraGroups = [ storageCfg.group ];
 
     # Create category directories for arr services
     systemd.tmpfiles.rules = [
       "d ${storageCfg.basePath}/downloads/complete/radarr 2775 ${storageCfg.user} ${storageCfg.group} -"
+      "d ${storageCfg.basePath}/downloads/complete/sonarr 2775 ${storageCfg.user} ${storageCfg.group} -"
     ];
 
     # Caddy-Tailscale reverse proxy entries
     services.caddy-tailscale.services = {
       jellyfin = { port = 8096; };
       radarr = { port = 7878; };
+      sonarr = { port = 8989; };
       prowlarr = { port = 9696; };
       transmission = { port = 9091; };
       jellyseerr = { port = 5055; };

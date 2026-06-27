@@ -18,7 +18,7 @@
         };
         Downloads = {
           style = "row";
-          columns = 3;
+          columns = 4;
         };
       };
     };
@@ -73,21 +73,28 @@
             Radarr = {
               icon = "radarr";
               href = "https://radarr.tail222568.ts.net";
-              description = "Movie management";
+              description = "Movies";
+            };
+          }
+          {
+            Sonarr = {
+              icon = "sonarr";
+              href = "https://sonarr.tail222568.ts.net";
+              description = "TV shows";
             };
           }
           {
             Prowlarr = {
               icon = "prowlarr";
               href = "https://prowlarr.tail222568.ts.net";
-              description = "Indexer manager";
+              description = "Indexers";
             };
           }
           {
             Transmission = {
               icon = "transmission";
               href = "https://transmission.tail222568.ts.net";
-              description = "Torrent client";
+              description = "Torrents";
             };
           }
         ];
