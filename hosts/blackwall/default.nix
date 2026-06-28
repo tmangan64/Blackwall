@@ -9,6 +9,8 @@
       ../../modules/caddy-tailscale.nix
       ../../modules/storage.nix
       ../../modules/arr.nix
+      ../../modules/forgejo.nix
+      ../../modules/code-server.nix
     ];
 
   # Bootloader
@@ -50,6 +52,12 @@
 
   # Arr* media management suite
   blackwall.arr.enable = true;
+
+  # Forgejo Git forge
+  blackwall.forgejo.enable = true;
+
+  # code-server (VS Code in browser, sandboxed to Forgejo repos)
+  blackwall.code-server.enable = true;
 
   # User account
   users.users.mizutani = {
