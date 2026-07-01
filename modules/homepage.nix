@@ -20,6 +20,10 @@
           style = "row";
           columns = 4;
         };
+        Development = {
+          style = "row";
+          columns = 2;
+        };
       };
     };
 
@@ -95,6 +99,24 @@
               icon = "transmission";
               href = "https://transmission.tail222568.ts.net";
               description = "Torrents";
+            };
+          }
+        ];
+      }
+      {
+        Development = [
+          {
+            Docs = {
+              icon = "mdbook";
+              href = "https://docs.tail222568.ts.net";
+              description = "Documentation";
+            };
+          }
+          {
+            Forgejo = {
+              icon = "forgejo";
+              href = "https://forgejo.tail222568.ts.net";
+              description = "Git forge";
             };
           }
         ];

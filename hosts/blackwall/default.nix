@@ -11,6 +11,7 @@
       ../../modules/arr.nix
       ../../modules/forgejo.nix
       ../../modules/code-server.nix
+      ../../modules/mdbook.nix
     ];
 
   # Bootloader
@@ -58,6 +59,9 @@
 
   # code-server (VS Code in browser, sandboxed to Forgejo repos)
   blackwall.code-server.enable = true;
+
+  # mdbook documentation server
+  blackwall.mdbook.enable = true;
 
   # User account
   users.users.mizutani = {
