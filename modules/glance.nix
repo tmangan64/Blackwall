@@ -24,8 +24,9 @@
             {
               size = "small";
               widgets = [
-                { type = "clock"; hour-format = "24h"; }
+                { type = "clock"; hour-format = "24h"; timezones = [{ timezone = "Europe/London"; label = "Jersey"; }]; }
                 { type = "calendar"; }
+                { type = "weather"; location = "Jersey, Channel Islands"; units = "metric"; }
               ];
             }
             {
@@ -36,38 +37,76 @@
                   cache = "1m";
                   title = "Services";
                   sites = [
-                    { title = "Jellyfin"; url = "https://jellyfin.tail222568.ts.net"; icon = "si:jellyfin"; }
-                    { title = "Radarr"; url = "https://radarr.tail222568.ts.net"; icon = "si:radarr"; }
-                    { title = "Sonarr"; url = "https://sonarr.tail222568.ts.net"; icon = "si:sonarr"; }
-                    { title = "Prowlarr"; url = "https://prowlarr.tail222568.ts.net"; icon = "si:prowlarr"; }
-                    { title = "Transmission"; url = "https://transmission.tail222568.ts.net"; icon = "si:transmission"; }
-                    { title = "Forgejo"; url = "https://forgejo.tail222568.ts.net"; icon = "si:forgejo"; }
+                    { title = "Jellyfin"; url = "https://jellyfin.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/jellyfin.svg"; }
+                    { title = "Radarr"; url = "https://radarr.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/radarr.svg"; }
+                    { title = "Sonarr"; url = "https://sonarr.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/sonarr.svg"; }
+                    { title = "Prowlarr"; url = "https://prowlarr.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/prowlarr.svg"; }
+                    { title = "Transmission"; url = "https://transmission.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/transmission.svg"; }
+                    { title = "Jellyseerr"; url = "https://jellyseerr.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/jellyseerr.svg"; }
+                    { title = "Forgejo"; url = "https://forgejo.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/forgejo.svg"; }
+                    { title = "Docs"; url = "https://docs.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/mdbook.svg"; }
                   ];
                 }
+              ];
+            }
+          ];
+        }
+        {
+          name = "Media";
+          columns = [
+            {
+              size = "full";
+              widgets = [
                 {
                   type = "bookmarks";
                   groups = [
                     {
-                      title = "Media";
+                      title = "Watch";
                       links = [
-                        { title = "Jellyfin"; url = "https://jellyfin.tail222568.ts.net"; }
-                        { title = "Jellyseerr"; url = "https://jellyseerr.tail222568.ts.net"; }
+                        { title = "Jellyfin"; url = "https://jellyfin.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/jellyfin.svg"; }
+                        { title = "Jellyseerr"; url = "https://jellyseerr.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/jellyseerr.svg"; }
                       ];
                     }
                     {
-                      title = "Downloads";
+                      title = "Manage";
                       links = [
-                        { title = "Radarr"; url = "https://radarr.tail222568.ts.net"; }
-                        { title = "Sonarr"; url = "https://sonarr.tail222568.ts.net"; }
-                        { title = "Prowlarr"; url = "https://prowlarr.tail222568.ts.net"; }
-                        { title = "Transmission"; url = "https://transmission.tail222568.ts.net"; }
+                        { title = "Radarr"; url = "https://radarr.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/radarr.svg"; }
+                        { title = "Sonarr"; url = "https://sonarr.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/sonarr.svg"; }
+                        { title = "Prowlarr"; url = "https://prowlarr.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/prowlarr.svg"; }
                       ];
                     }
                     {
-                      title = "Development";
+                      title = "Download";
                       links = [
-                        { title = "Docs"; url = "https://docs.tail222568.ts.net"; }
-                        { title = "Forgejo"; url = "https://forgejo.tail222568.ts.net"; }
+                        { title = "Transmission"; url = "https://transmission.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/transmission.svg"; }
+                      ];
+                    }
+                  ];
+                }
+              ];
+            }
+          ];
+        }
+        {
+          name = "Development";
+          columns = [
+            {
+              size = "full";
+              widgets = [
+                {
+                  type = "bookmarks";
+                  groups = [
+                    {
+                      title = "Code";
+                      links = [
+                        { title = "Forgejo"; url = "https://forgejo.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/forgejo.svg"; }
+                        { title = "Code Server"; url = "https://code.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/code-server.svg"; }
+                      ];
+                    }
+                    {
+                      title = "Documentation";
+                      links = [
+                        { title = "Docs"; url = "https://docs.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/mdbook.svg"; }
                       ];
                     }
                   ];
