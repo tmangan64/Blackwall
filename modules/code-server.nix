@@ -35,6 +35,7 @@ in
       BindPaths = [
         forgejoRepoPath
         "${forgejoStateDir}/code-server"
+        "${forgejoStateDir}/.config"
       ];
       BindReadOnlyPaths = [
         "/nix/store"
@@ -56,6 +57,7 @@ in
       "d ${forgejoStateDir}/code-server 0750 forgejo forgejo -"
       "d ${forgejoStateDir}/code-server/user-data 0750 forgejo forgejo -"
       "d ${forgejoStateDir}/code-server/extensions 0750 forgejo forgejo -"
+      "d ${forgejoStateDir}/.config 0750 forgejo forgejo -"
     ];
 
     # Caddy-Tailscale reverse proxy
