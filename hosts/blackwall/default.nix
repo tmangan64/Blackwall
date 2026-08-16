@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware.nix
-      ../../modules/homepage.nix
+      ../../modules/glance.nix
       ../../modules/tailscale.nix
       ../../modules/caddy-tailscale.nix
       ../../modules/storage.nix
@@ -100,10 +100,7 @@
     enable = true;
     # authKeyFile = "/run/secrets/tailscale-caddy-authkey";
     services = {
-      homepage = { port = 8082; };
-      # Add more services as needed:
-      # grafana = { port = 3000; };
-      # jellyfin = { port = 8096; };
+      glance = { port = 8082; };
     };
   };
 
