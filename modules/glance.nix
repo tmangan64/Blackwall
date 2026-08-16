@@ -12,8 +12,8 @@
       };
 
       theme = {
-        background-color = "15 15 15";
-        primary-color = "200 170 154";
+        background-color = "0 0 6";
+        primary-color = "30 30 70";
         contrast-multiplier = 1.1;
       };
 
