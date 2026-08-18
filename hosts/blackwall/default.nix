@@ -1,6 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 {
+  # Allow unfree packages (required for NeoForge)
+  nixpkgs.config.allowUnfree = true;
   imports =
     [
       ./hardware.nix
