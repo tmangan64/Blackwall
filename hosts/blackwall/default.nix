@@ -71,9 +71,9 @@
   # mdbook documentation server
   blackwall.mdbook.enable = true;
 
-  # Modded Minecraft 1.21.1 server
+  # Modded Minecraft 1.21.1 server (disabled until mods are configured)
   blackwall.minecraft = {
-    enable = true;
+    enable = false;
     memory = "4G";
     maxPlayers = 10;
     # Add whitelisted players here:
