@@ -1,17 +1,23 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [
       ./hardware.nix
-      ../../modules/glance.nix
-      ../../modules/tailscale.nix
-      ../../modules/caddy-tailscale.nix
-      ../../modules/storage.nix
-      ../../modules/arr.nix
-      ../../modules/forgejo.nix
-      ../../modules/code-server.nix
-      ../../modules/mdbook.nix
+      # Core
+      ../../modules/core/storage.nix
+      # Networking
+      ../../modules/networking/tailscale.nix
+      ../../modules/networking/caddy-tailscale.nix
+      # Services
+      ../../modules/service/glance.nix
+      ../../modules/service/arr.nix
+      # Development
+      ../../modules/development/forgejo.nix
+      ../../modules/development/code-server.nix
+      ../../modules/development/mdbook.nix
+      # Gaming
+      ../../modules/gaming/minecraft.nix
     ];
 
   # Bootloader
@@ -62,6 +68,21 @@
 
   # mdbook documentation server
   blackwall.mdbook.enable = true;
+
+  # Modded Minecraft 1.21.1 server
+  blackwall.minecraft = {
+    enable = true;
+    memory = "4G";
+    maxPlayers = 10;
+    # Add whitelisted players here:
+    # whitelist = {
+    #   "PlayerName" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+    # };
+    # Add operators here:
+    # ops = {
+    #   "PlayerName" = 4;
+    # };
+  };
 
   # User account
   users.users.mizutani = {

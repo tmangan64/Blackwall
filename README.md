@@ -19,6 +19,7 @@
 
 ## Minecraft Server Information
 
+1.21.1
 Mods:
 Matcha Flavoured (datapack)
 Bosses'Rise
