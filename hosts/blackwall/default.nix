@@ -14,6 +14,7 @@
       # Services
       ../../modules/service/glance.nix
       ../../modules/service/arr.nix
+      ../../modules/service/vikunja.nix
       # Development
       ../../modules/development/forgejo.nix
       ../../modules/development/code-server.nix
@@ -70,6 +71,9 @@
 
   # mdbook documentation server
   blackwall.mdbook.enable = true;
+
+  # Vikunja project management
+  blackwall.vikunja.enable = true;
 
   # Modded Minecraft 1.21.1 server (disabled until mods are configured)
   blackwall.minecraft = {

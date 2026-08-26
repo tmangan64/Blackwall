@@ -45,6 +45,7 @@
                     { title = "Jellyseerr"; url = "https://jellyseerr.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/jellyseerr.svg"; }
                     { title = "Forgejo"; url = "https://forgejo.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/forgejo.svg"; }
                     { title = "Docs"; url = "https://docs.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/mdbook.svg"; }
+                    { title = "Vikunja"; url = "https://vikunja.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/vikunja.svg"; }
                   ];
                 }
               ];
@@ -107,6 +108,12 @@
                       title = "Documentation";
                       links = [
                         { title = "Docs"; url = "https://docs.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/mdbook.svg"; }
+                      ];
+                    }
+                    {
+                      title = "Project Management";
+                      links = [
+                        { title = "Vikunja"; url = "https://vikunja.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/vikunja.svg"; }
                       ];
                     }
                   ];
