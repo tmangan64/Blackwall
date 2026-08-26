@@ -20,7 +20,7 @@ in
       };
       settings = {
         service = {
-          enableregistration = false;
+          enableregistration = true;
         };
       };
     };
