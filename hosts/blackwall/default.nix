@@ -77,9 +77,9 @@
 
   # Modded Minecraft 1.21.1 server (disabled until mods are configured)
   blackwall.minecraft = {
-    enable = false;
-    memory = "4G";
-    maxPlayers = 10;
+    enable = true;
+    memory = "8G";
+    maxPlayers = 20;
     # Add whitelisted players here:
     # whitelist = {
     #   "PlayerName" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
