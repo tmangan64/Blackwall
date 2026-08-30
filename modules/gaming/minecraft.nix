@@ -61,7 +61,7 @@ in
       servers.${cfg.serverName} = {
         enable = true;
         # Pinned to match the client modpack (Minecraft 1.21.1, NeoForge 21.1.249)
-        package = pkgs.neoforgeServers.neoforge-21_1_249;
+        package = pkgs.neoforgeServers.neoforge-1_21_1-21_1_249;
 
         jvmOpts = "-Xms${cfg.memory} -Xmx${cfg.memory}";
 
