@@ -103,6 +103,7 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
+    tmux
   ];
 
   # SSH
