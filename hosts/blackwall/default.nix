@@ -21,6 +21,7 @@
       ../../modules/development/mdbook.nix
       # Gaming
       ../../modules/gaming/minecraft.nix
+      ../../modules/gaming/playit.nix
     ];
 
   # Bootloader
@@ -88,6 +89,12 @@
     # ops = {
     #   "PlayerName" = 4;
     # };
+  };
+
+  # Playit.gg tunnel for external Minecraft access
+  blackwall.playit = {
+    enable = true;
+    secretPath = "/etc/playit-secret.toml";
   };
 
   # User account
