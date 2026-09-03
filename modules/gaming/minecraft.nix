@@ -80,7 +80,6 @@ in
           spawn-protection = 0;
           view-distance = 12;
           simulation-distance = 10;
-          ops = "Mizutani_"
         };
 
         whitelist = cfg.whitelist;
