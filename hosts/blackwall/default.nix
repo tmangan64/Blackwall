@@ -79,16 +79,16 @@
   # Modded Minecraft 1.21.1 server (disabled until mods are configured)
   blackwall.minecraft = {
     enable = true;
-    memory = "8G";
+    memory = "10G";
     maxPlayers = 20;
     # Add whitelisted players here:
     # whitelist = {
     #   "PlayerName" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
     # };
-    # Add operators here:
-    # ops = {
-    #   "PlayerName" = 4;
-    # };
+    # Operators (username = UUID)
+    ops = {
+      "Mizutani_" = "8d2d6d35-5260-4675-9f13-dcc647008819";
+    };
   };
 
   # Playit.gg tunnel for external Minecraft access
