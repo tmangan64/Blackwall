@@ -69,7 +69,7 @@ in
         serverProperties = {
           server-port = cfg.port;
           max-players = cfg.maxPlayers;
-          motd = "NEW - Now with Create + more!";
+          motd = "v2.1 OUT NOW! Hammers, Pipez and more!";
           difficulty = "normal";
           gamemode = "survival";
           white-list = cfg.whitelist != {};
@@ -471,6 +471,44 @@ in
           "mods/yet_another_config_lib_v3-3.8.2+1.21.1-neoforge.jar" = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/1eAoo2KR/versions/7TVdVtxF/yet_another_config_lib_v3-3.8.2%2B1.21.1-neoforge.jar";
             hash = "sha512-WD3hm5J86AUMK31eYLdazMaeMl5arIXCeZTIKp3sLk4Hg0P6HUw6ENS9fg5STgs7JGoYzwPbAeNjoeb4Za3PSA==";
+          };
+
+          # --- v2.1 additions ---
+
+          # Balm
+          "mods/balm-neoforge-1.21.1-21.0.65.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/MBAkmtvl/versions/KgypwTqX/balm-neoforge-1.21.1-21.0.65.jar";
+            hash = "sha512-d5tPnpc4rm8BDof3Gy7VoRTrmxs9W1XPQq1TgJTlsGSh0/T/AAZKrJDaHIQaFERk1HN42b/8RIpx2HEyy5VBAQ==";
+          };
+
+          # Create: Copycats+
+          "mods/copycats-3.0.8+mc.1.21.1-neoforge.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/UT2M39wf/versions/ZwGlMBIk/copycats-3.0.8%2Bmc.1.21.1-neoforge.jar";
+            hash = "sha512-he3ULUa6LDMSElhNEAm/LHvSF4LInSodmU290XCmgS4g/uaqUfrwqpNXvXXpc7aStGDDBoAJP4/CwJfFLcYLCA==";
+          };
+
+          # Just Hammers
+          "mods/just-hammers-neoforge-21.1.4.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/edU0NbZZ/versions/SobtrAG5/just-hammers-neoforge-21.1.4.jar";
+            hash = "sha512-Gwj7nYuuYGH2K7ddoDPH3Ky0B4w/Zt810SzpM1a3T0S+IyXq6FreoTWNyh8wLQoOz2felJNPASA4wXG17aEtqw==";
+          };
+
+          # NetherPortalFix
+          "mods/netherportalfix-neoforge-1.21.1-21.1.1.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/nPZr02ET/versions/O09BGtgh/netherportalfix-neoforge-1.21.1-21.1.1.jar";
+            hash = "sha512-vibFO056qdwnsF/kyv3RIKPRNWQQs10lOB1HO9mnqhnObOwbuYL9qELypmPRXexdEiSLUBQflHml6ewz7Sqz9w==";
+          };
+
+          # Pipez
+          "mods/pipez-neoforge-1.21.1-1.2.31.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/iRmWy6ga/versions/BPGKb8pi/pipez-neoforge-1.21.1-1.2.31.jar";
+            hash = "sha512-cpEjC2IQS3OwRWTW05uhjRETSlcT7nkkLHroiF0HxO+19dCrdbj/mroxGe2BY9DFSIrWA6LbIbktw1cVtyPOXg==";
+          };
+
+          # Aeronautics: simulated copycats
+          "mods/sim_copycats-1.3.2.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/NYBH9vVY/versions/6zbD44Qe/sim_copycats-1.3.2.jar";
+            hash = "sha512-7hHP1vNhbv/U3C7Fxcs1MuT1FV6waEwHl2yhG/xnPnhEs4NDYNOJ23TiJc/0k09asLtVDwmtz7OXJumM6IlonA==";
           };
         };
       };
