@@ -77,6 +77,9 @@ in
           # for clients on modded multiplayer (singleplayer/LAN never enforces this)
           enforce-secure-profile = false;
           enable-command-block = true;
+          # Don't kick players the server thinks are flying — required for
+          # modded flight (Immersive Aircraft, Create contraptions, etc.)
+          allow-flight = true;
           spawn-protection = 0;
           view-distance = 12;
           simulation-distance = 10;
