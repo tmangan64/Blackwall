@@ -69,7 +69,7 @@ in
         serverProperties = {
           server-port = cfg.port;
           max-players = cfg.maxPlayers;
-          motd = "v2.1 OUT NOW! Hammers, Pipez and more!";
+          motd = "v2.2 OUT NOW! Mining dimension, new End & cosmetic armour!";
           difficulty = "normal";
           gamemode = "survival";
           white-list = cfg.whitelist != {};
@@ -509,6 +509,86 @@ in
           "mods/sim_copycats-1.3.2.jar" = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/NYBH9vVY/versions/6zbD44Qe/sim_copycats-1.3.2.jar";
             hash = "sha512-7hHP1vNhbv/U3C7Fxcs1MuT1FV6waEwHl2yhG/xnPnhEs4NDYNOJ23TiJc/0k09asLtVDwmtz7OXJumM6IlonA==";
+          };
+
+          # --- v2.2 additions ---
+
+          # Blueprint
+          "mods/blueprint-1.21.1-8.2.0.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/VsM5EDoI/versions/FHOjk8Ez/blueprint-1.21.1-8.2.0.jar";
+            hash = "sha512-C1I8LVOlZnYobd0Trb5lsaJPWvYEDb7Gr5o4zFNbe6JTGhh5r7eklsQHaD6sv77SJwEFOGGl/RInGwiskyOdtA==";
+          };
+
+          # Chunk Loaders
+          "mods/chunkloaders-1.2.9-neoforge-mc1.21.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/t1VgucWo/versions/lVVhQRyh/chunkloaders-1.2.9-neoforge-mc1.21.jar";
+            hash = "sha512-PNBD5m9bj7v4GuaQ1NdvyfEQiOOw4cejaT097l0ImrEOeH6rgBMoV9DEK2fwj1Vm68DdN7ieZAY8fZuhWSt87g==";
+          };
+
+          # Cosmetic Armor Reworked Forked
+          "mods/cosmeticarmorreworkedforked-neoforge-1.21.1-0.0.4.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/6cpT8CUC/versions/U6kExSSz/cosmeticarmorreworkedforked-neoforge-1.21.1-0.0.4.jar";
+            hash = "sha512-+J31b9d3WSqR9jBj1rC2cWa9YNZFPcPiUm/tHDnu2ze2duuwP+GdjqmGKFqZmEQv8viiIa9KJqwHcbx+RYix0w==";
+          };
+
+          # Create: Dimension, Steamworks Realm
+          "mods/create_dimension-neoforge-1.21.1-2.0.0+neoforge-1.21.1.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/yHADpDIL/versions/2UuXBVSU/create_dimension-neoforge-1.21.1-2.0.0%2Bneoforge-1.21.1.jar";
+            hash = "sha512-QQ+VGH56LIPIv0L0wXS/mJvC08MGGJXnAAuIYbTolvB266zRHCZokzmvGmkrgEZT2rn1uzJCcCSZuVN577hs0w==";
+          };
+
+          # Easy Villagers
+          "mods/easy-villagers-neoforge-1.21.1-1.1.42.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/Kaov2qgi/versions/uXQvvtUt/easy-villagers-neoforge-1.21.1-1.1.42.jar";
+            hash = "sha512-WEvNVEmZbwvMZtl6iNo6FICH8bKeB3mDwGE3/xjB3DAt+PhO732DXmHrzZ/SIfmMZ8vpy0gPszpG3mJFYUpo5A==";
+          };
+
+          # End Villager Trader
+          "mods/end_villager_trader-1.0.1-neoforge-1.21.1.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/8oJ8PoQe/versions/AeUm3GSA/end_villager_trader-1.0.1-neoforge-1.21.1.jar";
+            hash = "sha512-foCWvsFkpTuvK0vxQWFIckJiAxne1UNDXn8ZCAdSHeTbZo9LfKc5jv1ci+iy1Cm+4C+bHfoG8CVqt/fa8vDLRA==";
+          };
+
+          # End Respawn Anchor
+          "mods/EndRespawnAnchorMod.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/xmdHQIdW/versions/1HZhYien/EndRespawnAnchorMod.jar";
+            hash = "sha512-z/mRvzpy5u+rwl9hFccn6ntxiOGoi2fP69zLHYT6RoGKdrBDvDIz15XgL34xtBn2GmHM2q4mOhVcmsg7r+U+Vw==";
+          };
+
+          # Lootr
+          "mods/lootr-neoforge-1.21.1-1.11.38.125.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/EltpO5cN/versions/ST5FHZnD/lootr-neoforge-1.21.1-1.11.38.125.jar";
+            hash = "sha512-Lo/kb/EaeGVAjZQXwx9G2ARQgU3Rx84NZ9UV5NrsQOuZyV6Pg8ARWNgtbFgSirHyblxTb9waThWx8xikzePVEg==";
+          };
+
+          # MES - Moog's End Structures
+          "mods/MoogsEndStructures-1.21-2.0.3.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/r4PuRGfV/versions/JW80uvhz/MoogsEndStructures-1.21-2.0.3.jar";
+            hash = "sha512-6vZ6GFT+VI+VN9uw7GCpE9ASaYDbJIQDGM7Xw90HQJebKCEQDWrNN+hac6ymoZDUELTXjUUD3GjjayOm38x7Fw==";
+          };
+
+          # Moog's Structure Lib (moogs_structures)
+          "mods/MoogsStructureLib-neoforge-1.21.1-3.1.2.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/1oUDhxuy/versions/3AOwEzBy/MoogsStructureLib-neoforge-1.21.1-3.1.2.jar";
+            hash = "sha512-wtTm1tpnA8A9YHJFt4BD+1S4qWoZSRabJj3ucLFI2iLXApxJXD6ivxShoEX7F6dSIqeDhzw/O3dxPcSd6mWsaw==";
+          };
+
+          # SuperMartijn642's Config Lib
+          "mods/supermartijn642configlib-1.1.8-neoforge-mc1.21.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/LN9BxssP/versions/qKL9jM75/supermartijn642configlib-1.1.8-neoforge-mc1.21.jar";
+            hash = "sha512-do2MoXjF5lOYb1Ext663+lfOfTLBbtOZztAbJzVlorZAEwxVxwknR+/v9A27A0iHaxi0FfWbDRbdLH8y8XmM4g==";
+          };
+
+          # SuperMartijn642's Core Lib
+          "mods/supermartijn642corelib-1.1.24-neoforge-mc1.21.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/rOUBggPv/versions/81s25oaA/supermartijn642corelib-1.1.24-neoforge-mc1.21.jar";
+            hash = "sha512-3zhE9m/vn1irQRGb0shglufKYT7MZG/5EDRKJdiR69PFAme/4gV+GPlt472z/A5K2lrsZNl/4ShltCcA3Ee7lw==";
+          };
+
+          # Unusual End
+          "mods/unusualend-2.3.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/WKsNOKFh/versions/aY6qjJ3S/unusualend-2.3.jar";
+            hash = "sha512-G7pSTWsMMpxp1eGWrF/xPAw14OIHB7A/RU7LrHvfysiFzfHQr33UmEwq+p8+5Lc5VZ52yqQTUINUMPlgYHhaEQ==";
           };
         };
       };
