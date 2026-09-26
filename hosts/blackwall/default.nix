@@ -15,6 +15,7 @@
       ../../modules/service/glance.nix
       ../../modules/service/arr.nix
       ../../modules/service/vikunja.nix
+      ../../modules/service/navidrome.nix
       # Development
       ../../modules/development/forgejo.nix
       ../../modules/development/code-server.nix
@@ -72,6 +73,9 @@
 
   # mdbook documentation server
   blackwall.mdbook.enable = true;
+
+  # Navidrome music streaming (library on the media disk, DB on the SSD)
+  blackwall.navidrome.enable = true;
 
   # Vikunja project management
   blackwall.vikunja.enable = true;

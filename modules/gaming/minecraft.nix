@@ -97,7 +97,7 @@ in
           }) cfg.ops
         ));
 
-        # Server-side mods for the "Arcadia" modpack (MC 1.21.1, NeoForge 21.1.249),
+        # Server-side mods for the "Blackwall" modpack (MC 1.21.1, NeoForge 21.1.249),
         # matched exactly (by file hash) to the client pack's jars.
         # Client-only mods (Sodium, Iris, BetterF3, Continuity, Entity Culling,
         # Euphoria Patches, Freecam, Fusion, Just Zoom + Konkrete, LambDynamicLights,
@@ -589,6 +589,68 @@ in
           "mods/unusualend-2.3.jar" = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/WKsNOKFh/versions/aY6qjJ3S/unusualend-2.3.jar";
             hash = "sha512-G7pSTWsMMpxp1eGWrF/xPAw14OIHB7A/RU7LrHvfysiFzfHQr33UmEwq+p8+5Lc5VZ52yqQTUINUMPlgYHhaEQ==";
+          };
+
+          # --- v2.3 additions ---
+
+          # Animal Feeding Trough
+          "mods/animal_feeding_trough-1.1.2+1.21-neoforge.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/bRFWnJ87/versions/9u4bmtUp/animal_feeding_trough-1.1.2%2B1.21-neoforge.jar";
+            hash = "sha512-2dXfZ3QyrmgEDOQTxhI+h213pmPdzci9Bu59nk8LBLZ4cs5rY5zrxLuxIll0IWiCCmpxMDLk8TdumKAfbiPsuA==";
+          };
+
+          # Caelus API
+          "mods/caelus-neoforge-7.0.1+1.21.1.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/40FYwb4z/versions/KsfI4QsR/caelus-neoforge-7.0.1%2B1.21.1.jar";
+            hash = "sha512-N2P5UwSt4rrLIXgox07u95BaEU9x1BU31WEhr1jBgsJoVGelr7fgPds5l+w9dJa9/fcamUap8z40cDk+ehMwbQ==";
+          };
+
+          # Collective
+          "mods/collective-1.21.1-8.39.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/e0M1UDsY/versions/4XRlrKGN/collective-1.21.1-8.39.jar";
+            hash = "sha512-Xo0ldlCyrOBB30dDFyeX36hvrqo/otsTiQSC9DOxibrQN8T1OZtbWw4+ZfqwwIh+9l5cXCTrpsCdqPle00NbAg==";
+          };
+
+          # Create: Dragons Plus
+          "mods/CreateDragonsPlus-1.11.9.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/dzb1a5WV/versions/b0u9vk8C/CreateDragonsPlus-1.11.9.jar";
+            hash = "sha512-QymeSa/nEyUVqorVRbjJVm2Q8Sz7OUVrPW4evI4D8FeH+8Qg58yUld9Na1hdE+ekxMc4X4LyCuuCnJSRtyWvUw==";
+          };
+
+          # Create: Enchantable Machinery
+          "mods/createenchantablemachinery-3.6.0+mc1.21.1-neoforge.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/eqrvp4NK/versions/Cw5k6c0a/createenchantablemachinery-3.6.0%2Bmc1.21.1-neoforge.jar";
+            hash = "sha512-HdoX8y2SuSrC6VP3zCjv1r5NYnyoX0Y5ZUu8Os3JyHm/DB/C9m4JVodNbiGSjBVW3xYw7iJD1naD4e7+JjEvxw==";
+          };
+
+          # Create: Enchantment Industry
+          "mods/create-enchantment-industry-2.5.4.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/JWGBpFUP/versions/WJ2VPWAG/create-enchantment-industry-2.5.4.jar";
+            hash = "sha512-j38C6Bh4B6G7xKhiqRGsQHiNzLcMXwpupbz45D3BQU15Z6gojhruCrBwVvCFGkR30mLPfAMeQ90eAREZdXrOog==";
+          };
+
+          # Elytra Slot
+          "mods/elytraslot-neoforge-9.0.2+1.21.1.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/mSQF1NpT/versions/RX6A02W1/elytraslot-neoforge-9.0.2%2B1.21.1.jar";
+            hash = "sha512-JXrx6N4RY0xWHmF6xkzixFKuvYa9CmuixNFkzul0ajDAk6pekT1VOzSuTCNdWxe0Dl+V2xjy/qj25jYb1AXYGQ==";
+          };
+
+          # Elytra Trims
+          "mods/elytratrims-neoforge-3.10.0+1.21.1.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/XpzGz7KD/versions/XRCucewh/elytratrims-neoforge-3.10.0%2B1.21.1.jar";
+            hash = "sha512-0LdhP2SV0DdZlROv6aDMkMhAldITgiq6A9Uq/K/4zqUhuCtlPz8m4rx0aOoft2KdGq10iyTeuROJns/f483hwA==";
+          };
+
+          # Kotlin for Forge
+          "mods/kotlinforforge-5.12.0-all.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/ordsPcFz/versions/uhJhCT7X/kotlinforforge-5.12.0-all.jar";
+            hash = "sha512-uMOUL00zF57fPxAvPYcLmd1Db4uCNtu9MapRuIgWLGks/YiScpXyTci0N1Iy9MbBc2DF1sSCP5PLzXz0vci9FA==";
+          };
+
+          # Tree Harvester
+          "mods/treeharvester-1.21.1-9.1.jar" = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/abooMhox/versions/OtzwmSlR/treeharvester-1.21.1-9.1.jar";
+            hash = "sha512-7wVmbbIJvMM5qJyDEGwymlHTIxAYj5Ezddjrs/+YJR+ZriG6pt7xjhEl1k5dRU9s1cXb5/jdwAMS36G4moZsTQ==";
           };
         };
       };

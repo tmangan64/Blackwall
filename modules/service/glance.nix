@@ -46,6 +46,7 @@
                     { title = "Forgejo"; url = "https://forgejo.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/forgejo.svg"; }
                     { title = "Docs"; url = "https://docs.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/mdbook.svg"; }
                     { title = "Vikunja"; url = "https://vikunja.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/vikunja.svg"; }
+                    { title = "Navidrome"; url = "https://navidrome.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/navidrome.svg"; }
                   ];
                 }
               ];
@@ -66,6 +67,12 @@
                       links = [
                         { title = "Jellyfin"; url = "https://jellyfin.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/jellyfin.svg"; }
                         { title = "Jellyseerr"; url = "https://jellyseerr.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/jellyseerr.svg"; }
+                      ];
+                    }
+                    {
+                      title = "Listen";
+                      links = [
+                        { title = "Navidrome"; url = "https://navidrome.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/navidrome.svg"; }
                       ];
                     }
                     {

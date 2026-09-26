@@ -59,6 +59,9 @@ in
       # Archives and other content sources
       "d ${cfg.basePath}/archives 2775 ${cfg.user} ${cfg.group} -"
       "d ${cfg.basePath}/soulseek 2775 ${cfg.user} ${cfg.group} -"
+
+      # Service database backups (kept off the root SSD)
+      "d ${cfg.basePath}/backups 2775 ${cfg.user} ${cfg.group} -"
     ];
   };
 }
