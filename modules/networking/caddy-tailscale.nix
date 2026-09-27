@@ -33,26 +33,6 @@ in
       '';
     };
 
-    forceLogin = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = ''
-        Set TSNET_FORCE_LOGIN=1, which is required for a newly added node to
-        ever register.
-
-        tsnet only consumes TS_AUTHKEY when a node's backend state is
-        NeedsLogin at the instant Caddy checks it, which a brand-new node
-        usually is not - it is still in NoState. The key is then discarded, no
-        login is started, and the node never registers with the control plane,
-        so it never appears in the tailnet at all.
-
-        The cost is that every node re-runs login on each restart, so the key
-        in authKeyFile must stay valid: an expired or revoked credential fails
-        the whole service rather than just the new node. Set this to false to
-        get the service back up with the nodes that are already registered.
-      '';
-    };
-
     services = lib.mkOption {
       type = lib.types.attrsOf (lib.types.submodule {
         options = {
@@ -78,17 +58,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # No credential is hardcoded in this module, so a missing authKeyFile would
-    # otherwise show up as nodes silently never appearing in the tailnet.
-    assertions = [{
-      assertion = cfg.authKeyFile != null;
-      message = ''
-        services.caddy-tailscale.authKeyFile must be set - Tailscale nodes
-        cannot register without a credential. Point it at the sops template:
-        config.sops.templates."caddy-tailscale.env".path
-      '';
-    }];
-
     # Ensure Tailscale is enabled
     services.tailscale.enable = true;
 
@@ -137,8 +106,6 @@ in
         # State directory for Tailscale node state
         StateDirectory = "caddy-tailscale";
         WorkingDirectory = "/var/lib/caddy-tailscale";
-      } // lib.optionalAttrs cfg.forceLogin {
-        Environment = "TSNET_FORCE_LOGIN=1";
       } // lib.optionalAttrs (cfg.authKeyFile != null) {
         EnvironmentFile = cfg.authKeyFile;
       };
