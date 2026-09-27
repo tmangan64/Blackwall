@@ -99,7 +99,25 @@ in
         # State directory for Tailscale node state
         StateDirectory = "caddy-tailscale";
         WorkingDirectory = "/var/lib/caddy-tailscale";
-        Environment = "TS_AUTHKEY=tskey-auth-kuM4TrDcxm11CNTRL-jFR7x8ScCvgCDRKEGDCnvgGDJXRTUFqy";
+        Environment = [
+          "TS_AUTHKEY=tskey-auth-kuM4TrDcxm11CNTRL-jFR7x8ScCvgCDRKEGDCnvgGDJXRTUFqy"
+
+          # Required for any newly added node to ever register.
+          #
+          # tsnet only consumes TS_AUTHKEY when a node's backend state is
+          # NeedsLogin at the instant Caddy checks it, which a brand-new node
+          # usually is not - it is still in NoState. The key is then discarded,
+          # no login is started, and the node never registers with the control
+          # plane, so it simply never appears in the tailnet. This forces the
+          # login path regardless of state, which makes adding a node to
+          # services.caddy-tailscale.services a single rebuild.
+          #
+          # The cost is that every node re-runs login on each restart, so
+          # TS_AUTHKEY must stay valid for the lifetime of the system - a
+          # reusable key that has expired would then affect nodes that were
+          # previously registered and fine, not just new ones.
+          "TSNET_FORCE_LOGIN=1"
+        ];
       } // lib.optionalAttrs (cfg.authKeyFile != null) {
         EnvironmentFile = cfg.authKeyFile;
       };
