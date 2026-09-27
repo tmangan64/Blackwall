@@ -1,0 +1,22 @@
+# Recipients for encrypting secrets/*.yaml.
+#
+#   admin_mizutani - ~/.config/sops/age/keys.txt on blackwall. Lets `sops
+#                    secrets/secrets.yaml` edit secrets without root. Back the
+#                    AGE-SECRET-KEY line up off the machine; if blackwall dies
+#                    and that line is gone, the secrets are unrecoverable.
+#   host_blackwall - derived from /etc/ssh/ssh_host_ed25519_key.pub via
+#                    ssh-to-age. This is what lets the system itself decrypt at
+#                    activation, so it must stay in every rule below.
+#
+# After adding or removing a recipient, re-encrypt existing files:
+#   sops updatekeys secrets/secrets.yaml
+keys:
+  - &admin_mizutani age1a5nc4p37qd8ajadn650d4gu5524vp7hgnmudrzwq0xxtrdqtuqnsdjuhqm
+  - &host_blackwall age16k3sxq7vy8xr0yxjeg4jrmqcmgyxyj386u87cs6feg8gpta53egqxf5na3
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *admin_mizutani
+          - *host_blackwall

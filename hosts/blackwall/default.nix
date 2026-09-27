@@ -7,6 +7,7 @@
     [
       ./hardware.nix
       # Core
+      ../../modules/core/secrets.nix
       ../../modules/core/storage.nix
       # Networking
       ../../modules/networking/tailscale.nix
@@ -98,7 +99,7 @@
   # Playit.gg tunnel for external Minecraft access
   blackwall.playit = {
     enable = true;
-    secretPath = "/etc/playit-secret.toml";
+    secretPath = config.sops.templates."playit-secret.toml".path;
   };
 
   # User account
@@ -108,7 +109,6 @@
     extraGroups = [ "networkmanager" "wheel" "media" ];
     packages = with pkgs; [];
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPHEr9l0xPvco+x1zz2X5skaIwpjtI0+QGOELm/KtV5d kiroshi"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN29UWB3Ab6ZrUj2sCzcFVSqS7Uwwp83FDDn5CkdVvCW mizutani@canto"
     ];
   };
@@ -116,6 +116,11 @@
   # System packages
   environment.systemPackages = with pkgs; [
     tmux
+    # Secrets management: `sops secrets/secrets.yaml` to edit, ssh-to-age to
+    # derive a host's age recipient from its SSH host key.
+    sops
+    age
+    ssh-to-age
   ];
 
   # SSH
@@ -138,7 +143,7 @@
   # Each service gets its own custom URL: https://<name>.your-tailnet.ts.net
   services.caddy-tailscale = {
     enable = true;
-    # authKeyFile = "/run/secrets/tailscale-caddy-authkey";
+    authKeyFile = config.sops.templates."caddy-tailscale.env".path;
     services = {
       glance = { port = 8082; };
     };

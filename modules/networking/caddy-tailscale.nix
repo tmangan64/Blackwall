@@ -18,11 +18,38 @@ in
       type = lib.types.nullOr lib.types.path;
       default = null;
       description = ''
-        Path to file containing Tailscale auth key.
+        Path to a systemd EnvironmentFile containing the Tailscale credential.
         Format: TS_AUTHKEY=tskey-auth-...
+
+        Normally rendered by sops-nix rather than written by hand, see
+        modules/core/secrets.nix:
+          authKeyFile = config.sops.templates."caddy-tailscale.env".path;
+
+        A reusable auth key works but expires (90 days maximum); an OAuth client
+        secret goes in the same TS_AUTHKEY slot and does not.
 
         Generate a reusable auth key at:
         https://login.tailscale.com/admin/settings/keys
+      '';
+    };
+
+    forceLogin = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = ''
+        Set TSNET_FORCE_LOGIN=1, which is required for a newly added node to
+        ever register.
+
+        tsnet only consumes TS_AUTHKEY when a node's backend state is
+        NeedsLogin at the instant Caddy checks it, which a brand-new node
+        usually is not - it is still in NoState. The key is then discarded, no
+        login is started, and the node never registers with the control plane,
+        so it never appears in the tailnet at all.
+
+        The cost is that every node re-runs login on each restart, so the key
+        in authKeyFile must stay valid: an expired or revoked credential fails
+        the whole service rather than just the new node. Set this to false to
+        get the service back up with the nodes that are already registered.
       '';
     };
 
@@ -51,6 +78,17 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    # No credential is hardcoded in this module, so a missing authKeyFile would
+    # otherwise show up as nodes silently never appearing in the tailnet.
+    assertions = [{
+      assertion = cfg.authKeyFile != null;
+      message = ''
+        services.caddy-tailscale.authKeyFile must be set - Tailscale nodes
+        cannot register without a credential. Point it at the sops template:
+        config.sops.templates."caddy-tailscale.env".path
+      '';
+    }];
+
     # Ensure Tailscale is enabled
     services.tailscale.enable = true;
 
@@ -99,25 +137,8 @@ in
         # State directory for Tailscale node state
         StateDirectory = "caddy-tailscale";
         WorkingDirectory = "/var/lib/caddy-tailscale";
-        Environment = [
-          "TS_AUTHKEY=tskey-auth-kuM4TrDcxm11CNTRL-jFR7x8ScCvgCDRKEGDCnvgGDJXRTUFqy"
-
-          # Required for any newly added node to ever register.
-          #
-          # tsnet only consumes TS_AUTHKEY when a node's backend state is
-          # NeedsLogin at the instant Caddy checks it, which a brand-new node
-          # usually is not - it is still in NoState. The key is then discarded,
-          # no login is started, and the node never registers with the control
-          # plane, so it simply never appears in the tailnet. This forces the
-          # login path regardless of state, which makes adding a node to
-          # services.caddy-tailscale.services a single rebuild.
-          #
-          # The cost is that every node re-runs login on each restart, so
-          # TS_AUTHKEY must stay valid for the lifetime of the system - a
-          # reusable key that has expired would then affect nodes that were
-          # previously registered and fine, not just new ones.
-          "TSNET_FORCE_LOGIN=1"
-        ];
+      } // lib.optionalAttrs cfg.forceLogin {
+        Environment = "TSNET_FORCE_LOGIN=1";
       } // lib.optionalAttrs (cfg.authKeyFile != null) {
         EnvironmentFile = cfg.authKeyFile;
       };

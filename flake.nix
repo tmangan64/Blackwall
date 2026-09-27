@@ -3,9 +3,15 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nix-minecraft, playit-nixos-module }@inputs: {
+  # Inputs are reached through specialArgs rather than destructured here, so
+  # adding an input is a one-line change above.
+  outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = {
       blackwall = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
