@@ -17,6 +17,7 @@
       ../../modules/service/arr.nix
       ../../modules/service/vikunja.nix
       ../../modules/service/navidrome.nix
+      ../../modules/service/books.nix
       # Development
       ../../modules/development/forgejo.nix
       ../../modules/development/code-server.nix
@@ -77,6 +78,9 @@
 
   # Navidrome music streaming (library on the media disk, DB on the SSD)
   blackwall.navidrome.enable = true;
+
+  # Books: Calibre-Web-Automated for reading, Shelfmark for discovery/download
+  blackwall.books.enable = true;
 
   # Vikunja project management
   blackwall.vikunja.enable = true;

@@ -47,6 +47,8 @@
                     { title = "Docs"; url = "https://docs.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/mdbook.svg"; }
                     { title = "Vikunja"; url = "https://vikunja.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/vikunja.svg"; }
                     { title = "Navidrome"; url = "https://navidrome.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/navidrome.svg"; }
+                    { title = "Calibre-Web"; url = "https://books.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/calibre-web.svg"; }
+                    { title = "Shelfmark"; url = "https://shelfmark.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/shelfmark.svg"; }
                   ];
                 }
               ];
@@ -73,6 +75,13 @@
                       title = "Listen";
                       links = [
                         { title = "Navidrome"; url = "https://navidrome.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/navidrome.svg"; }
+                      ];
+                    }
+                    {
+                      title = "Read";
+                      links = [
+                        { title = "Calibre-Web"; url = "https://books.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/calibre-web.svg"; }
+                        { title = "Shelfmark"; url = "https://shelfmark.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/shelfmark.svg"; }
                       ];
                     }
                     {
