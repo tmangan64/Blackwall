@@ -86,6 +86,38 @@ in
     users.users.sonarr.extraGroups = [ storageCfg.group ];
     users.users.transmission.extraGroups = [ storageCfg.group ];
 
+    # Wait for the media filesystem before starting anything that writes to it.
+    #
+    # This matters most for transmission, and it fails silently. The upstream
+    # module runs the daemon with RootDirectory = /run/transmission and
+    # bind-mounts download-dir into that private namespace. If the unit starts
+    # before basePath is mounted, BindPaths= resolves the empty placeholder
+    # directory sitting under the mountpoint on the root filesystem and
+    # captures *that* into the namespace. The media disk then mounts over the
+    # top, so transmission completes torrents onto the root SSD into a
+    # directory nothing else can see, and keeps doing so until the unit is
+    # restarted - while its UI reports the correct path throughout.
+    #
+    # Diagnosed with:
+    #   nsenter -t $(systemctl show -p MainPID --value transmission) -m -- \
+    #     findmnt /media/downloads/complete
+    # which showed the source as /dev/nvme0n1p2 instead of the media disk.
+    systemd.services.transmission.unitConfig.RequiresMountsFor = [
+      storageCfg.basePath
+    ];
+    # transmission-setup runs `install -d` on the download directories before
+    # transmission starts, so it needs the same guard.
+    systemd.services.transmission-setup.unitConfig.RequiresMountsFor = [
+      storageCfg.basePath
+    ];
+    # These three do not use a private namespace, so they pick up the mount
+    # once it appears - but starting against an empty directory still lets them
+    # flag a whole library as missing, which is the failure navidrome.nix
+    # guards against for the same reason.
+    systemd.services.jellyfin.unitConfig.RequiresMountsFor = [ storageCfg.basePath ];
+    systemd.services.radarr.unitConfig.RequiresMountsFor = [ storageCfg.basePath ];
+    systemd.services.sonarr.unitConfig.RequiresMountsFor = [ storageCfg.basePath ];
+
     # Create category directories for arr services
     systemd.tmpfiles.rules = [
       "d ${storageCfg.basePath}/downloads/complete/radarr 2775 ${storageCfg.user} ${storageCfg.group} -"
