@@ -187,6 +187,11 @@ in
           # Same host directory as CWA's ingest bind - this is the whole
           # integration between the two.
           "${cfg.ingestPath}:/books"
+          # Torrent and usenet sources hand Shelfmark a path reported by the
+          # download client, so it has to see that path at the same location
+          # the client does - hence the identical source and target. Without
+          # this, transmission-sourced books connect but never import.
+          "${storageCfg.basePath}/downloads/complete:${storageCfg.basePath}/downloads/complete"
         ];
       };
     };
@@ -198,6 +203,21 @@ in
       [ cfg.libraryPath cfg.ingestPath ];
     systemd.services.podman-shelfmark.unitConfig.RequiresMountsFor =
       [ cfg.ingestPath ];
+
+    # Shelfmark needs to reach transmission's RPC API to use it as a download
+    # client. arr.nix sets services.transmission.openFirewall, which looks like
+    # it covers this but does not: upstream makes that option an alias for
+    # openPeerPorts, so it opens the peer port and leaves the RPC port closed.
+    # Transmission does listen on 0.0.0.0:9091, but the firewall drops anything
+    # arriving from off-host, which is why the web UI works (Caddy reaches it
+    # over loopback) while the container times out.
+    #
+    # Opened on the podman bridge only. The alternative, openRPCPort, would
+    # expose an RPC API with no password and rpc-whitelist-enabled = false to
+    # the whole LAN.
+    networking.firewall.interfaces."podman0".allowedTCPPorts = [
+      config.services.transmission.settings.rpc-port
+    ];
 
     # Caddy-Tailscale reverse proxy
     services.caddy-tailscale.services = {
