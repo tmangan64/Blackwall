@@ -49,6 +49,7 @@
                     { title = "Navidrome"; url = "https://navidrome.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/navidrome.svg"; }
                     { title = "Calibre-Web"; url = "https://books.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/calibre-web.svg"; }
                     { title = "Shelfmark"; url = "https://shelfmark.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/shelfmark.svg"; }
+                    { title = "Vaultwarden"; url = "https://vault.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/vaultwarden.svg"; }
                   ];
                 }
               ];

@@ -18,6 +18,7 @@
       ../../modules/service/vikunja.nix
       ../../modules/service/navidrome.nix
       ../../modules/service/books.nix
+      ../../modules/service/vaultwarden.nix
       # Development
       ../../modules/development/forgejo.nix
       ../../modules/development/code-server.nix
@@ -84,6 +85,11 @@
 
   # Vikunja project management
   blackwall.vikunja.enable = true;
+
+  # Vaultwarden password vault (nightly backup on the media disk).
+  # Registration is open so the first account can be created - set
+  # allowSignups = false once it exists.
+  blackwall.vaultwarden.enable = true;
 
   # Modded Minecraft 1.21.1 server (disabled until mods are configured)
   blackwall.minecraft = {
