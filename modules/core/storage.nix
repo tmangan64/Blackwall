@@ -29,6 +29,24 @@ in
   };
 
   config = mkIf cfg.enable {
+    # Order the media disk before systemd-tmpfiles-setup.
+    #
+    # The mount is `nofail`, and per systemd.mount(5) that does not only make
+    # it optional - it also drops the mount's ordering before local-fs.target.
+    # systemd-tmpfiles-setup is therefore free to run first, create every
+    # directory below on the root disk, and have the real filesystem mounted
+    # over the top of them a moment later. Services then write into a shadowed
+    # directory that looks correct and disappears on the next boot, which is
+    # the failure mode Nextcloud hit on its first deploy.
+    #
+    # `x-systemd.before=` is ordering only, so the disk stays genuinely
+    # optional: if it cannot be mounted, tmpfiles still runs and the boot still
+    # completes. Services that must not run without it (see the
+    # RequiresMountsFor in nextcloud.nix and vaultwarden.nix) are what refuse.
+    #
+    # This assumes basePath is a mount point declared in hardware.nix.
+    fileSystems.${cfg.basePath}.options = [ "x-systemd.before=systemd-tmpfiles-setup.service" ];
+
     # Create shared media group for all services to access files
     users.groups.${cfg.group} = { };
 
