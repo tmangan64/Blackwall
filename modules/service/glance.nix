@@ -50,6 +50,7 @@
                     { title = "Calibre-Web"; url = "https://books.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/calibre-web.svg"; }
                     { title = "Shelfmark"; url = "https://shelfmark.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/shelfmark.svg"; }
                     { title = "Vaultwarden"; url = "https://vault.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/vaultwarden.svg"; }
+                    { title = "Nextcloud"; url = "https://cloud.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/nextcloud.svg"; }
                   ];
                 }
               ];
@@ -83,6 +84,13 @@
                       links = [
                         { title = "Calibre-Web"; url = "https://books.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/calibre-web.svg"; }
                         { title = "Shelfmark"; url = "https://shelfmark.tail222568.ts.net"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/shelfmark.svg"; }
+                      ];
+                    }
+                    {
+                      title = "Files";
+                      links = [
+                        { title = "Nextcloud"; url = "https://cloud.tail222568.ts.net/apps/files"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/nextcloud.svg"; }
+                        { title = "News"; url = "https://cloud.tail222568.ts.net/apps/news"; icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/nextcloud.svg"; }
                       ];
                     }
                     {
