@@ -19,6 +19,7 @@
       ../../modules/service/navidrome.nix
       ../../modules/service/books.nix
       ../../modules/service/vaultwarden.nix
+      ../../modules/service/nextcloud.nix
       # Development
       ../../modules/development/forgejo.nix
       ../../modules/development/code-server.nix
@@ -90,6 +91,16 @@
   # Registration is open so the first account can be created - set
   # allowSignups = false once it exists.
   blackwall.vaultwarden.enable = true;
+
+  # Nextcloud: Files on the media disk, News for feeds. One admin account,
+  # created on first start from the sops secret. Password login for now - the
+  # module is set up so a FIDO2 key can be enrolled from the web UI without a
+  # rebuild (Settings -> Security), after which 2FA enforcement can be turned
+  # on. Do not enforce it before a key is enrolled.
+  blackwall.nextcloud = {
+    enable = true;
+    adminPasswordFile = config.sops.secrets.nextcloud_admin_password.path;
+  };
 
   # Modded Minecraft 1.21.1 server (disabled until mods are configured)
   blackwall.minecraft = {

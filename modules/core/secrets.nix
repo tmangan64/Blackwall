@@ -42,6 +42,16 @@
 
       # playit.gg tunnel agent credential.
       playit_secret_key.restartUnits = [ "playit.service" ];
+
+      # Nextcloud admin password, read by nextcloud-setup.service during the
+      # initial install only - after that the password lives in the database
+      # and this secret is just the record of it.
+      #
+      # Owned by nextcloud rather than root: nextcloud-setup runs as the
+      # nextcloud user, so a root-only 0400 secret is unreadable to it. No
+      # restartUnits, because re-running setup does not re-apply the password;
+      # changing it means `nextcloud-occ user:resetpassword <user>`.
+      nextcloud_admin_password.owner = "nextcloud";
     };
 
     # Both consumers want the secret wrapped in a file format rather than bare,
